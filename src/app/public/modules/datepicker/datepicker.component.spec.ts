@@ -465,7 +465,7 @@ describe('datepicker', () => {
         ngModel = <NgModel>inputElement.injector.get(NgModel);
       });
 
-     it('should validate properly when invalid date is passed through input change',
+      it('should validate properly when invalid date is passed through input change',
         fakeAsync(() => {
           fixture.detectChanges();
           tick();
@@ -474,8 +474,7 @@ describe('datepicker', () => {
 
           expect(nativeElement.querySelector('input').value).toBe('abcdebf');
 
-          expect(component.selectedDate)
-            .toBe('abcdebf');
+          expect(component.selectedDate).toBe('abcdebf');
 
           expect(ngModel.valid).toBe(false);
           expect(ngModel.pristine).toBe(false);
@@ -707,11 +706,14 @@ describe('datepicker', () => {
 
         expect(nativeElement.querySelector('input').value).toBe(initialDate);
         expect(component.selectedDate).toEqual(new Date(initialDate));
+        tick();
+        fixture.detectChanges();
 
         inputEl.value = newDate;
 
         expect(nativeElement.querySelector('input').value).toBe(newDate);
         expect(component.selectedDate).toEqual(new Date(initialDate));
+        fixture.detectChanges();
 
         component.inputDirective.detectInputValueChange();
 
@@ -720,7 +722,6 @@ describe('datepicker', () => {
       }));
 
     });
-
   });
 
   describe('reactive form', () => {
@@ -962,8 +963,7 @@ describe('datepicker', () => {
 
           expect(nativeElement.querySelector('input').value).toBe('abcdebf');
 
-          expect(component.dateControl.value)
-            .toBe('abcdebf');
+          expect(component.dateControl.value).toBe('abcdebf');
 
           expect(component.dateControl.valid).toBe(false);
           expect(component.dateControl.pristine).toBe(false);
